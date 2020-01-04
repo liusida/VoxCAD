@@ -130,7 +130,7 @@ Dlg_Physics::Dlg_Physics(QVX_Sim* pSimIn, QWidget *parent)
 	PlotUpdateTimer->start(PlotUpdateRate); //just run continuously...
 
 	UpdateUI();
-	
+
 }
 
 
