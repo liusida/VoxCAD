@@ -11,7 +11,7 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #ifndef QGL_Utils_H
 #define QGL_Utils_H
 
-#include "../voxelyze/include/Vec3D.h"
+#include "Vec3D.h"
 #ifndef vfloat
 #define vfloat double
 #endif

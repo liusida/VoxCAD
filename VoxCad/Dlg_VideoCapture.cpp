@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "Dlg_VideoCapture.h"
 #include <QFileDialog>
-
+#include <QIntValidator>
 
 
 Dlg_VideoCapture::Dlg_VideoCapture(QWidget *parent)

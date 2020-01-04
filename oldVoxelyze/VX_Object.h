@@ -12,7 +12,7 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #define CVX_OBJECT_H
 
 #include <vector>
-#include "../voxelyze/include/Vec3D.h" //use this for portability, instead of Vec3D()
+#include "Vec3D.h" //use this for portability, instead of Vec3D()
 #include "XML_Rip.h" 
 
 /*Written by: Jonathan Hiller (jdh74) */

@@ -18,7 +18,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <QTimer>
 #include "ui_vPhysics.h"
 #include "QVX_Interfaces.h"
-#include <QScrollBar.h>
+#include <QScrollBar>
 
 class QSimplePlot;
 

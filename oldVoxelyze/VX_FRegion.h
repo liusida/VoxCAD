@@ -11,7 +11,7 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #ifndef CVX_FRegion_H
 #define CVX_FRegion_H
 
-#include "../voxelyze/include/Vec3D.h"
+#include "Vec3D.h"
 #include "XML_Rip.h"
 #include "Mesh.h"
 

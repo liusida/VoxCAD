@@ -175,7 +175,9 @@ public slots: //global slot repository for updating things across all windows/vi
 
 	//info for OpenGL class
 	void WantGLIndex(bool* YN) {if(CurViewMode!=VM_EDITLAYER) *YN=true; else *YN = false;}
-	void WantCoord3D(bool* YN) {if((CurViewMode==VM_EDITLAYER && GLWindow->GetCurView() != VPERSPECTIVE )|| CurViewMode==VM_PHYSICS) *YN=true; else *YN = false;}
+    void WantCoord3D(bool* YN) {
+        if((CurViewMode==VM_EDITLAYER && GLWindow->GetCurView() != VPERSPECTIVE )|| CurViewMode==VM_PHYSICS) *YN=true; else *YN = false;
+    }
 
 	//mouse handlers: (take the emits from OpenGL and distribute them according to current mode:
 	void HoverMove(float X, float Y, float Z) {	if(CurViewMode==VM_EDITLAYER) MainObj.HoverMove(Vec3D<>(X, Y, Z));};

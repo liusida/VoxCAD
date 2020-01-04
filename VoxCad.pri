@@ -45,7 +45,6 @@ HEADERS += ./oldVoxelyze/VX_Enums.h \
     ./QTUtils/QThreadWrap.h \
     ./QTUtils/QSimplePlot.h \
     ./Voxelyze/include/Array3D.h \
-    ./Voxelyze/include/MarchCube.h \
     ./Voxelyze/include/Quat3D.h \
     ./Voxelyze/include/Vec3D.h \
     ./Voxelyze/include/Voxelyze.h \
@@ -114,4 +113,4 @@ FORMS += ./VoxCad/vBCs.ui \
     ./VoxCad/vVoxInfo.ui \
     ./VoxCad/vWorkSpace.ui \
     ./VoxCad/vVideoGen.ui
-RESOURCES += VoxCad.qrc
+RESOURCES += ./VoxCad/VoxCad.qrc

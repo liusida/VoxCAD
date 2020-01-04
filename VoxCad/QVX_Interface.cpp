@@ -441,7 +441,7 @@ void QVX_Sim::SimLoop(QString* pSimMessage)
 			}
 #ifdef VX2
 			if (pVoxSel != NULL){
-				Vec3D<> Size = 1000*pVoxSel->size();
+                Vec3D<float> Size = 1000*pVoxSel->size();
 				Message += "\n\nSize X:" + QString::number(Size.x, 'g', 3)+" Y:" + QString::number(Size.y, 'g', 3)+" Z:" + QString::number(Size.z, 'g', 3) + " mm"
 					"\nVolume = " + QString::number(Size.x*Size.y*Size.z, 'g', 3) + " mm^3";
 			}

@@ -13,7 +13,7 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #define MARCHCUBE_H
 
 #include "Mesh.h"
-#include "../voxelyze/include/Array3D.h"
+#include "Array3D.h"
 
 //takes a vector of 3D arrays of floats and turns them into an iso-surface...
 //class CArray3Df;

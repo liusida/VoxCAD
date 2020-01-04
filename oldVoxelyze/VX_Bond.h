@@ -11,8 +11,8 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #ifndef VX_BOND_H
 #define VX_BOND_H
 
-#include "../voxelyze/include/Vec3D.h"
-#include "../voxelyze/include/Quat3D.h"
+#include "Vec3D.h"
+#include "Quat3D.h"
 #include "VX_Enums.h"
 class CVXS_Voxel;
 class CVX_Sim;

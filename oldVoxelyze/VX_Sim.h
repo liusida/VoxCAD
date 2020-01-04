@@ -25,8 +25,8 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #define VX2 //use the next version of voxelyze?
 
 //#ifdef VX2
-#include "../voxelyze/include/Voxelyze.h"
-#include "../voxelyze/include/VX_Material.h"
+#include "Voxelyze.h"
+#include "VX_Material.h"
 //#endif
 
 //#ifdef USE_OPEN_GL

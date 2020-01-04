@@ -12,7 +12,7 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #define VXS_VOXEL_H
 
 #include "VXt_Voxel.h"
-#include "../voxelyze/include/Quat3D.h"
+#include "Quat3D.h"
 
 
 class CVXS_BondCollision;

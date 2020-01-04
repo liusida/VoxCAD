@@ -4,7 +4,6 @@
 
 TEMPLATE = app
 TARGET = VoxCad
-DESTDIR = release
 QT += core gui xml opengl concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += debug
@@ -12,12 +11,14 @@ DEFINES += QT_XML_LIB QT_OPENGL_LIB USE_ZLIB_COMPRESSION USE_OPEN_GL QT_DLL PREC
 INCLUDEPATH += ../../../../Libs/qwt/src \
     . \
     ./../Voxelyze \
+    ./Voxelyze/include \
     ../Voxelyze \
     ./GeneratedFiles/$(Configuration) \
     ./GeneratedFiles \
     ./../Utils \
     /usr/include/qwt
-LIBS += -lqwt \
+LIBS += \
+#-lqwt \
 #    -lOpenGL32 \
     -lGL \
  #   -lglu32 \
@@ -27,8 +28,9 @@ LIBS += -lqwt \
     -lm
  #   -l qwt-qt4
 DEPENDPATH += .
-MOC_DIR += ./GeneratedFiles/release
-OBJECTS_DIR += release
+#DESTDIR = release
+#MOC_DIR += ./GeneratedFiles/release
+#OBJECTS_DIR += release
 UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
 include(VoxCad.pri)

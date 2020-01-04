@@ -20,8 +20,8 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #endif
 
 #ifdef VX2
-#include "../voxelyze/include/VX_Material.h"
-#include "../voxelyze/include/VX_Voxel.h"
+#include "VX_Material.h"
+#include "VX_Voxel.h"
 #endif
 
 CVX_Sim::CVX_Sim(void)// : VoxelInput(this), BondInput(this) // : out("Logfile.txt", std::ios::ate)

@@ -1689,7 +1689,7 @@ bool CVXC_Structure::WriteXML(CXML_Rip* pXML, int Compression, std::string* RetM
 		else if (Compress == "QT_ZLIB"){
 			#ifdef QT_CORE_LIB
 				QString DataInString(RawData.c_str());
-				QByteArray QRawData = DataInString.toAscii();
+				QByteArray QRawData = DataInString.toLatin1();
 				QByteArray QWriteData = qCompress(QRawData).toBase64();
 				WriteData = QString(QWriteData).toStdString();
 			#else
@@ -1730,7 +1730,7 @@ bool CVXC_Structure::ReadXML(CXML_Rip* pXML, std::string Version, std::string* R
 			if (Compression == "QT_ZLIB"){ //DEPRECATED
 				#ifdef QT_CORE_LIB
 					QString DataInString(RawData.c_str());
-					QByteArray QRawData = DataInString.toAscii();
+					QByteArray QRawData = DataInString.toLatin1();
 					QByteArray test = QByteArray::fromBase64(QRawData);
 					QByteArray QDataIn = qUncompress(test); //if compressed using this scheme
 					DataIn.resize(QDataIn.size());
@@ -1800,7 +1800,7 @@ bool CVXC_Structure::ReadXML(CXML_Rip* pXML, std::string Version, std::string* R
 	return true;
 }
 
-std::string CVXC_Structure::ToBase64(unsigned char const* bytes_to_encode, unsigned int in_len) // René Nyffenegger http://www.adp-gmbh.ch/cpp/common/base64.html
+std::string CVXC_Structure::ToBase64(unsigned char const* bytes_to_encode, unsigned int in_len) // Renï¿½ Nyffenegger http://www.adp-gmbh.ch/cpp/common/base64.html
 {
 	std::string ret;
 	int i = 0;
@@ -1833,7 +1833,7 @@ std::string CVXC_Structure::ToBase64(unsigned char const* bytes_to_encode, unsig
 	return ret;
 }
 
-std::string CVXC_Structure::FromBase64(std::string const& encoded_string) // René Nyffenegger http://www.adp-gmbh.ch/cpp/common/base64.html
+std::string CVXC_Structure::FromBase64(std::string const& encoded_string) // Renï¿½ Nyffenegger http://www.adp-gmbh.ch/cpp/common/base64.html
 {
 	int in_len = encoded_string.size();
 	int i = 0;
