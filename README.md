@@ -73,3 +73,24 @@ Understanding Poisson's Ratio:
 
 [![](https://i.ytimg.com/vi/tuOlM3P7ygA/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBVaNtvEewQxuTZv6eHlH1zacW0mg)](https://www.youtube.com/watch?v=tuOlM3P7ygA)
 
+## Example of Hyperparameters
+
+Hyperparameters from https://github.com/skriegman/2019-RSS
+
+1. Material
+
+    * Elastic Modulus: 10 Million Pa;
+    * Poisson Ratio: 0.35;
+    * Density: 1 Million Kg/m^3;
+    * Coefficient of Thermal Expansion (CTE): 0.01 1/degree Celsius;
+    * Temp Phase: 0 rad; (What's this?)
+    * Static Friction Coefficient: 1;
+    * Dynamic Friction Coefficient: 0.5;
+
+2. World
+
+    * Timestep 0.3 % of optimal dt;
+    * Ground damp ratio: 0.01 z; (What's this?)
+    * Temperature: 39 degree Celsius;
+    * Vary Temperature Period: 0.2 second;
+
