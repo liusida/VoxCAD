@@ -467,9 +467,11 @@ void CQOpenGL::GLScreenToCoord3D(QPoint p, Vec3D<>& RetVec, bool SetZDepthHere)
 	glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix); //unit matrix, but there shouldn't be much overhead in this call since we need for unproject() anyway
 	glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
 
-	if (SetZDepthHere) glReadPixels(p.x(), viewport[1] + viewport[3] - p.y(), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &lastZDepth);
+    if (SetZDepthHere) {
+        glReadPixels(p.x(), viewport[1] + viewport[3] - p.y(), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &lastZDepth);
+    }
 	if (lastZDepth < 0) lastZDepth = 0;
-	else if (lastZDepth >= 1.0){
+    else if (lastZDepth > 1.0){ //Sida: instead of >=, use >. Because lastZDepth could be 1.0.
 		lastZDepth = 1.0; //at the back extreme
 		RetVec = Vec3D<>(0,0,0);
 		return;

@@ -180,7 +180,10 @@ public slots: //global slot repository for updating things across all windows/vi
     }
 
 	//mouse handlers: (take the emits from OpenGL and distribute them according to current mode:
-	void HoverMove(float X, float Y, float Z) {	if(CurViewMode==VM_EDITLAYER) MainObj.HoverMove(Vec3D<>(X, Y, Z));};
+    void HoverMove(float X, float Y, float Z) {
+        if(CurViewMode==VM_EDITLAYER)
+            MainObj.HoverMove(Vec3D<>(X, Y, Z));
+    };
 	void LMouseDown(float X, float Y, float Z, bool IsCtrl) {if(CurViewMode==VM_EDITLAYER) MainObj.LMouseDown(Vec3D<>(X, Y, Z), IsCtrl); else if (CurViewMode==VM_PHYSICS) MainSim.LMouseDown(Vec3D<>(X, Y, Z));};
 	void LMouseUp(float X, float Y, float Z) {if(CurViewMode==VM_EDITLAYER) MainObj.LMouseUp(Vec3D<>(X, Y, Z));else if (CurViewMode==VM_PHYSICS) MainSim.LMouseUp(Vec3D<>(X, Y, Z));};
 	void LMouseDownMove(float X, float Y, float Z) {if(CurViewMode==VM_EDITLAYER) MainObj.LMouseDownMove(Vec3D<>(X, Y, Z)); else if (CurViewMode==VM_PHYSICS) MainSim.LMouseDownMove(Vec3D<>(X, Y, Z));};

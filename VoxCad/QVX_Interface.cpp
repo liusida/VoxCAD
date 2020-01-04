@@ -27,6 +27,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "../../include/DMU.h"
 #endif
 
+// Sida: The parameter for Win32 Sleep is in ms, but for unistd sleep is in second.
+// Change all time to ms for now.
 #ifdef WIN32
 #define LOCALSLEEP Sleep
 #else
@@ -404,7 +406,7 @@ void QVX_Sim::SimLoop(QString* pSimMessage)
 		while(Paused){
 			ActuallyPaused = true;
 			if (StopSim) break; //kick out of the loop if we've stopped...
-			LOCALSLEEP(100);
+            LOCALSLEEP(1);
 		}
 		ActuallyPaused = false;
 
@@ -565,7 +567,7 @@ void QVX_Sim::SimPauseToggle()
 	ReqGLUpdate();
 
 	if (WasRunning){
-		while (!ActuallyPaused){QCoreApplication::processEvents(); LOCALSLEEP(10);}
+        while (!ActuallyPaused){QCoreApplication::processEvents(); LOCALSLEEP(1);}
 	}
 }
 
@@ -586,7 +588,7 @@ void QVX_Sim::ResetSim()
 
 	if (Running){
 		Paused = true;
-		while (!ActuallyPaused){QCoreApplication::processEvents(); LOCALSLEEP(10);}
+        while (!ActuallyPaused){QCoreApplication::processEvents(); LOCALSLEEP(1);}
 	}
 
 	ResetSimulation();
