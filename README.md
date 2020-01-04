@@ -8,7 +8,13 @@ Download QT5 and QT Creator. I downloaded them here: https://www.qt.io/download-
 
 Install QT5 and QT Creator. I choose to only install "Qt 5.12.6" -> "Desktop gcc 64-bit" and "Developer and Desinger Tools". They are about 1.86G.
 
-Clone this repository.
+Clone this repository "VoxCAD" and its submodule "Voxelyze": (Anyone know how to do this in one step?)
+
+```bash
+git clone git@github.com:liusida/VoxCAD.git
+cd VoxCAD
+git clone git@github.com:liusida/Voxelyze.git
+```
 
 Open QT Creator, open the project by opening the "VoxCad.pro" file.
 
