@@ -65,7 +65,11 @@ Now you can see your robot moving.
 
 ## Great videos about physical concepts
 
-Understanding Young's Modulus: https://www.youtube.com/watch?v=DLE-ieOVFjI
+Understanding Young's Modulus: 
 
-Understanding Poisson's Ratio: https://www.youtube.com/watch?v=tuOlM3P7ygA
+[![](https://i.ytimg.com/vi/DLE-ieOVFjI/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDVt2H-rw0Bg7acXSBktS2e0DqeZA)](https://www.youtube.com/watch?v=DLE-ieOVFjI)
+
+Understanding Poisson's Ratio: 
+
+[![](https://i.ytimg.com/vi/tuOlM3P7ygA/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBVaNtvEewQxuTZv6eHlH1zacW0mg)](https://www.youtube.com/watch?v=tuOlM3P7ygA)
 
