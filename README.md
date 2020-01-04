@@ -38,6 +38,10 @@ Use QT5 Creator as IDE, instead of Visual Studio.
 
 4.4 Change "Temp (deg C)" to like "40".
 
+5. Damping
+
+5.1 Set "Ground Damping Ratio (z)" to "0.04" if you feel the robot is too energetic.
+
 Now you can see your robot moving.
 
 Wrong order may cause "Segmentation fault" error. :(
