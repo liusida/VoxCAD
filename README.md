@@ -63,5 +63,9 @@ Compile and (Debug or Run).
 
 Now you can see your robot moving.
 
-Wrong order may cause "Segmentation fault" error. :(
+## Great videos about physical concepts
+
+Understanding Young's Modulus: https://www.youtube.com/watch?v=DLE-ieOVFjI
+
+Understanding Poisson's Ratio: https://www.youtube.com/watch?v=tuOlM3P7ygA
 
