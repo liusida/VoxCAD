@@ -81,7 +81,7 @@ Hyperparameters from https://github.com/skriegman/2019-RSS
 
     * Elastic Modulus: 10 Million Pa;
     * Poisson Ratio: 0.35;
-    * Density: 1 Million Kg/m^3;
+    * Density: 1 Million Kg/m^3; (Never saw such dense material... but works fine in simulation.)
     * Coefficient of Thermal Expansion (CTE): 0.01 1/degree Celsius;
     * Temp Phase: 0 rad; (What's this?)
     * Static Friction Coefficient: 1;
