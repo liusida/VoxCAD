@@ -1,7 +1,3 @@
 [submodule "Voxelyze"]
 	path = Voxelyze
 	url = https://github.com/liusida/Voxelyze.git
-
-[submodule "Voxelyze.Ti"]
-	path = Voxelyze.Ti
-	url = https://github.com/liusida/Voxelyze.Ti.git
