@@ -150,7 +150,7 @@ void Dlg_VideoCapture::ClickedSelectFolderButton(void)
 {
 	QString dir = QFileDialog::getExistingDirectory(this, "Open Folder", CurFolder, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 	//if (check for cancel)
-	if (!dir.endsWith("\\")) dir += "\\";
+    if (!dir.endsWith("/")) dir += "/"; //Sida: change to Linux path format for now
 	CurFolder = dir;
 	Settings.setValue("VideoCapture/Folder", CurFolder);
 	UpdateUI();
