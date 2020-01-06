@@ -16,7 +16,7 @@ cd VoxCAD
 git clone git@github.com:liusida/Voxelyze.git
 ```
 
-Open QT Creator, open the project by opening the "VoxCad.pro" file.
+Open QT Creator, open the project by opening the "VoxCAD.pro" file.
 
 Compile and (Debug or Run).
 
