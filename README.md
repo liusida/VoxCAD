@@ -94,3 +94,8 @@ Hyperparameters from https://github.com/skriegman/2019-RSS
     * Temperature: 39 degree Celsius;
     * Vary Temperature Period: 0.2 second;
 
+
+## Issue with using Visual Studio Code and CMake
+
+Even with VS Code 1.41, in terminal, if we want to launch any application with GUI, there will be fatal problem. So install VS Code insider 1.42 instead: https://code.visualstudio.com/insiders/ and this issue has been fixed.
+
