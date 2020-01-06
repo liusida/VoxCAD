@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = VoxCad
+TARGET = VoxCAD
 QT += core gui xml opengl concurrent
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += debug
@@ -29,4 +29,4 @@ DEPENDPATH += .
 #OBJECTS_DIR += release
 UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
-include(VoxCad.pri)
+include(VoxCAD.pri)
