@@ -13,17 +13,18 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 
 #include "VXS_Bond.h"
 
-#ifdef PREC_LOW
-	static const vfloat SA_BOND_BEND_RAD = 0.1; //Amount for small angle bond calculations
-#elif defined PREC_HIGH
-	static const vfloat SA_BOND_BEND_RAD = 0.02; //Amount for small angle bond calculations
-#elif defined PREC_MAX 
-	static const vfloat SA_BOND_BEND_RAD = 0.002; //Amount for small angle bond calculations
-#else //defined PREC_MED 
-	static const vfloat SA_BOND_BEND_RAD = 0.05; //Amount for small angle bond calculations
-#endif
+#include "types.h"
+// #ifdef PREC_LOW
+// 	static const vfloat SA_BOND_BEND_RAD = 0.1; //Amount for small angle bond calculations
+// #elif defined PREC_HIGH
+// 	static const vfloat SA_BOND_BEND_RAD = 0.02; //Amount for small angle bond calculations
+// #elif defined PREC_MAX 
+// 	static const vfloat SA_BOND_BEND_RAD = 0.002; //Amount for small angle bond calculations
+// #else //defined PREC_MED 
+// 	static const vfloat SA_BOND_BEND_RAD = 0.05; //Amount for small angle bond calculations
+// #endif
 
-static const vfloat SA_BOND_EXT_PERC = 1.30; //Amount for small angle bond calculations
+// static const vfloat SA_BOND_EXT_PERC = 1.30; //Amount for small angle bond calculations
 
 class CVXS_BondInternal : public CVXS_Bond
 {

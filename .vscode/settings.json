@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "qdomdocument": "cpp",
+        "qfile": "cpp"
+    }
+}
