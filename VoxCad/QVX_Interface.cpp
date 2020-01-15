@@ -349,7 +349,7 @@ void QVX_Sim::SimLoop(QString* pSimMessage)
 	int UpPlotEv = 30; //updates plot every X ms when not plotting every point.
 	char PlotDataTypes;
 	bool PlotVis, StatusVis;
-
+	unsigned long int _step = 0;
 	while (true){ //do this step...
 		if (StopConditionMet()){InternalEnding = true; StatToCalc=CALCSTAT_ALL; UpdateStats(); RetMsg+="Simulation stop condition reached.\n";break;}//if stop condition met...
 		
@@ -391,7 +391,8 @@ void QVX_Sim::SimLoop(QString* pSimMessage)
 //		if (tLastStatCalc.elapsed() > StatCalcNumber*30){CalcStat=true; StatCalcNumber++; /*tLastStatCalc.restart();*/}
 
 		if (!TimeStep(&RetMsg)){InternalEnding = true; break;}//if something happened in this timestep
-
+		// if (_step++ % 1000==0)
+		// 	printf("Time: %f, pos[0]: %f %f %f\n", Vx.currentTime, Vx.voxelsList[0]->pos.x, Vx.voxelsList[0]->pos.y, Vx.voxelsList[0]->pos.z);
 		if (DrawingGLLocal){
 			IsStillDrawing = true;
 			ReqGLDrawingStatus(&IsStillDrawing);
@@ -821,4 +822,43 @@ void QVX_Sim::EndRecording(void) //stops recording
 	emit ResetGLWindow();
 
 	Recording = false;
+}
+
+void QVX_Sim::injure() {
+    printf("injure.\n");
+    fflush(stdout);
+	CVX_Material* mat_will_injure = Vx.getMaterialByName("Will_Injure");
+	for (int ix=Vx.indexMinX();ix<=Vx.indexMaxX();ix++) {
+		for (int iy=Vx.indexMinY();iy<=Vx.indexMaxY();iy++) {
+			for (int iz=Vx.indexMinZ();iz<=Vx.indexMaxZ();iz++) {
+				for (int id=X_POS;id<Z_NEG;id++) {
+					// printf("%d %d %d %d\n", ix,iy,iz,id);
+					CVX_Voxel::linkDirection link_dir = static_cast<CVX_Voxel::linkDirection>(id);
+					CVX_Link* link = Vx.link(ix,iy,iz,link_dir);
+					if (link) {
+						// CVX_Voxel* v1 = link->voxel(true);
+						// CVX_Voxel* v2 = link->voxel(false);
+						// printf("voxel: %p = %p\n", v1, v2);
+
+						CVX_Voxel* vox1 = link->voxel(true);
+						CVX_Voxel* vox2 = link->voxel(false);
+						if (vox1->material()==mat_will_injure || vox2->material()==mat_will_injure) {
+							Vx.removeLink(ix,iy,iz,link_dir);
+						}
+						if (vox1->material()==mat_will_injure && !vox1->isDetached ) {
+						// 	Vx.voxels.removeValue(ix, iy, iz);
+							vox1->isDetached = true;
+						}
+						if (vox2->material()==mat_will_injure && !vox2->isDetached ) {
+						// 	Vx.voxels.removeValue(  ix+Vx.xIndexVoxelOffset(link_dir),
+						// 							iy+Vx.yIndexVoxelOffset(link_dir),
+						// 							iz+Vx.zIndexVoxelOffset(link_dir));
+							vox2->isDetached = true;
+						}
+					}
+				}
+			}
+		}
+	}
+	pSimView->SetCurViewVox(RVV_DISCRETE);
 }

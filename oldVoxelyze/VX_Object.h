@@ -150,7 +150,7 @@ public:
 	char& operator [](int i) const {return GetData(i);}
 
 	//I/O function for save/loading
-	bool WriteXML(CXML_Rip* pXML, int Compression = CP_ZLIB, std::string* RetMessage = NULL);
+	bool WriteXML(CXML_Rip* pXML, int Compression = CP_ASCIIREADABLE, std::string* RetMessage = NULL);
 	bool ReadXML(CXML_Rip* pXML, std::string Version = "", std::string* RetMessage = NULL); //version -1 means latest.
 	static inline bool is_base64(unsigned char c) {return (isalnum(c) || (c == '+') || (c == '/'));}
 	std::string ToBase64(unsigned char const* , unsigned int len);
@@ -173,6 +173,12 @@ public:
 	void ClearStructure(); //completly erases, frees, and destroys the voxel array
 	void ResetStructure(); //erases all voxel imformation within voxel array
 	void ReplaceMaterial(int Matindex, int ReplaceWith = 0, bool ShiftDown = false); //converts a material to ReplaceWith, option to decrement all higher indices
+	
+	//PhaseOffset
+	inline void SetPhaseOffset(int Index, double Value) {pPhaseOffsets[Index] = Value;} // nac: sets the material index here
+	inline double GetPhaseOffset(int Index) const {return pPhaseOffsets[Index];}
+	inline void InitPhaseOffsetArray(int Size) {pPhaseOffsets = new double[Size];}
+	inline bool GetUsingPhaseOffset(void) {return usingPhaseOffset;}
 
 protected:
 	//variable from file
@@ -192,6 +198,11 @@ protected:
 	//functions that should only be used locally
 	void DeleteData(void); //sandbox the creation and destruction...
 	void IniData(int Size);
+
+	//PhaseOffset
+	bool usingPhaseOffset; 
+	double* pPhaseOffsets;
+
 };
 
 //!Voxel object class.	
@@ -212,14 +223,14 @@ public:
 	std::vector<CVXC_Material> Palette; //!< The palette of materials available for use in this object.
 
 	//I/O function for save/loading
-	void SaveVXCFile(std::string filename, int Compression = CP_ZLIB); //!< Saves all voxel object information from this voxel object into an XML-based format.
+	void SaveVXCFile(std::string filename, int Compression = CP_ASCIIREADABLE); //!< Saves all voxel object information from this voxel object into an XML-based format.
 	bool LoadVXCFile(std::string filename); //!< Attempts to load all voxel object information from the specified file.
 	void SaveVXPFile(std::string filename); //!< Saves all material palette information from this voxel object into an XML-based format.
 	bool LoadVXPFile(std::string filename); //!< Attempts to load all material palette information from the specified file.
 	bool ExportKV6File(std::string filename); //!< Exports kV6 file compatible with slab6
 
-	void WriteXML(CXML_Rip* pXML, int Compression = CP_ZLIB, std::string* RetMessage = NULL); //!< Writes all voxel object information to an XML ripping stream.
-	void WritePaletteXML(CXML_Rip* pXML, int Compression = CP_ZLIB); //!< Writes just material palette information to an XML ripping stream.
+	void WriteXML(CXML_Rip* pXML, int Compression = CP_ASCIIREADABLE, std::string* RetMessage = NULL); //!< Writes all voxel object information to an XML ripping stream.
+	void WritePaletteXML(CXML_Rip* pXML, int Compression = CP_ASCIIREADABLE); //!< Writes just material palette information to an XML ripping stream.
 	void ReadXML(CXML_Rip* pXML, bool OnlyPal = false, std::string* RetMessage = NULL); //!< Attempts to extract voxel object from XML tree.
 	void ReadPaletteXML(CXML_Rip* pXML, std::string Version = ""); //!< Attempts to extract material palette from XML tree.
 
@@ -335,7 +346,7 @@ public:
 	CVXC_Material& operator=(const CVXC_Material& RefMat); //overload "=" 
 
 	//I/O function for save/loading
-	void WriteXML(CXML_Rip* pXML, int Compression = CP_ZLIB);
+	void WriteXML(CXML_Rip* pXML, int Compression = CP_ASCIIREADABLE);
 	void ReadXML(CXML_Rip* pXML, std::string Version = "", std::string* RetMessage = NULL);
 
 	//Functions to modify material

@@ -117,6 +117,8 @@ Dlg_Physics::Dlg_Physics(QVX_Sim* pSimIn, QWidget *parent)
 	connect(ui.LogEachCheck, SIGNAL(clicked(bool)), this, SLOT(LogEachCheckChanged(bool)));
 	connect(ui.SaveDataButton, SIGNAL(clicked()), this, SLOT(ClickedSaveData()));
 
+    connect(ui.btnInjure, SIGNAL(clicked()), this, SLOT(on_btnInjure_clicked()));
+
 	//set up plot for real-time display...
 	
 	pPlot = new QSimplePlot();
@@ -367,4 +369,14 @@ void Dlg_Physics::ClickedSaveData(void)
 void Dlg_Physics::IsPlotVisible(bool* pVisible)
 {
 	*pVisible =  pPlot->isVisible();
+}
+
+void Dlg_Physics::on_btnInjure_clicked()
+{
+    pSim->injure();
+}
+
+void Dlg_Physics::on_chkSticky_stateChanged(int State)
+{
+    pSim->EnableFeature(VXSFEAT_STICKY, State); UpdateUI();
 }

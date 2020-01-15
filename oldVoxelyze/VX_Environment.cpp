@@ -333,13 +333,15 @@ float CVX_Environment::UpdateCurTemp(vfloat time, CVX_Object* pUpdateInObj)
 		if (TempPeriod == 0) return 0.0f; //avoid NaNs.
 		CurTemp = TempBase + TempAmplitude*sin(2*3.1415926/TempPeriod*time);	//update the global temperature
 		for (int i = 0; i<(int)pObjUpdate->GetNumMaterials(); i++){ //now update the individual temperatures of each material (they can each have a different temperature)
-			pObjUpdate->GetBaseMat(i)->SetCurMatTemp(TempBase + TempAmplitude*sin((2*3.1415926f/TempPeriod) * time + pObjUpdate->GetBaseMat(i)->GetMatTempPhase()));	//and update each one
+			//No need to update here. Did that in VX_Sim for PhaseOffset
+			//pObjUpdate->GetBaseMat(i)->SetCurMatTemp(TempBase + TempAmplitude*sin((2*3.1415926f/TempPeriod) * time + pObjUpdate->GetBaseMat(i)->GetMatTempPhase()));	//and update each one
 		}
 	}
 	else {
 		CurTemp = TempBase + TempAmplitude;
 		for (int i = 0; i<pObj->GetNumMaterials(); i++){ //for each material...
-			pObjUpdate->GetBaseMat(i)->SetCurMatTemp(CurTemp); //...update each one
+			//No need to update here. Did that in VX_Sim for PhaseOffset
+			//pObjUpdate->GetBaseMat(i)->SetCurMatTemp(CurTemp); //...update each one
 		}
 	}
 	return CurTemp;

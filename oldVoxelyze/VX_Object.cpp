@@ -28,6 +28,18 @@ See <http://www.opensource.org/licenses/lgpl-3.0.html> for license details.
 #include "GL_Utils.h"
 #endif
 
+/* split used in PhaseOffset */
+std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) 
+{
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) 
+    {
+        elems.push_back(item);
+    }
+    return elems;
+}
+
 
 CVX_Object::CVX_Object(void)
 {
@@ -1797,6 +1809,65 @@ bool CVXC_Structure::ReadXML(CXML_Rip* pXML, std::string Version, std::string* R
 			IteratorIn++;
 		}
 	}
+
+	//Read PhaseOffset
+
+	if (pXML->FindElement("PhaseOffset")){ 
+		usingPhaseOffset = true;
+		int voxCounter = 0;
+		// std::cout << "found weights!" << std::endl;
+		InitPhaseOffsetArray(X_Voxels*Y_Voxels*Z_Voxels);
+		for (int i=0; i<Z_Voxels; i++)
+		{
+			std::string DataIn;
+			std::string RawData;
+			// std::string thisValue;
+			pXML->FindLoadElement("Layer", &RawData, true, true);
+		
+			std::vector<std::string> dataArray;
+			dataArray = split(RawData,',',dataArray);
+			// std::cout << "rawData, Layer " << i << ": " << RawData << std::endl;
+			// std::cout << "rawData, Layer " << i << ": " << dataArray[0] << std::endl;
+			// DataIn.resize(RawData.size());
+			// for (int k=0; k<(int)RawData.size(); k++)
+			// std::istringstream iss(RawData);
+			for (int k=0; k<X_Voxels*Y_Voxels; k++)
+			{
+				// std::getline(iss,thisValue,",");
+				// std::cout << thisValue << std::endl;
+				// DataIn[k] = RawData[k]-48; 
+				// SetPhaseOffset((X_Voxels*Y_Voxels)*i+k,atof(dataArray[k].c_str()));
+				if (pData[X_Voxels*Y_Voxels*i+k] > 0)
+				{
+					SetPhaseOffset(voxCounter,atof(dataArray[k].c_str()));
+					voxCounter++;
+				}
+			}
+
+			// for(int j=0; j<NumNuerons; j++)
+			// {
+			// 	SetData(j, atof(DataIn[j]); 
+			// }
+
+		}
+		pXML->UpLevel(); //Layer
+		pXML->UpLevel(); //Weights
+
+		// for (int i=0; i<NumNuerons; i++)
+		// {
+		// 	for (int j=0; j<NumNuerons; j++)
+		// 	{
+		// 		std::cout << GetSynapseWeight(i*NumNuerons+j) << " ";
+		// 	}
+		// 	std::cout << std::endl;
+		// }
+
+	}
+	else
+	{
+		usingPhaseOffset = false;
+	}
+
 	return true;
 }
 

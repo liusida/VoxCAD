@@ -289,6 +289,7 @@ void CVX_Sim::EnableFeature(const int VXSFEAT, bool Enabled)
 	case VXSFEAT_GRAVITY: if(Enabled) Vx.setGravity(1.0); else Vx.setGravity(0.0); break;
 	case VXSFEAT_FLOOR: Vx.enableFloor(Enabled); break;
 	case VXSFEAT_COLLISIONS: Vx.enableCollisions(Enabled); break;
+	case VXSFEAT_STICKY: Vx.enableSticky(Enabled); break; //Sticky
 	case VXSFEAT_EQUILIBRIUM_MODE: EnableEquilibriumMode(Enabled); break;
 	case VXSFEAT_TEMPERATURE: if (pEnv) pEnv->EnableTemp(Enabled); UpdateMatTemps(); break;
 	case VXSFEAT_TEMPERATURE_VARY: if (pEnv) pEnv->EnableTempVary(Enabled); break;
@@ -438,6 +439,8 @@ bool CVX_Sim::Import(CVX_Environment* pEnvIn, CMesh* pSurfMeshIn, std::string* R
 		if (VxcMatIndex>=0){
 			LocalVXC.GetXYZNom(&x, &y, &z, i);
 			VoxList.push_back(Vx.setVoxel(VxcToVx2MatIndexMap[VxcMatIndex], x, y, z));
+			//PhaseOffset
+			VoxList.back()->phaseOffset = pEnv->pObj->Structure.GetPhaseOffset(VoxList.size()-1);
 		}
 	}
 
@@ -1222,11 +1225,20 @@ void CVX_Sim::UpdateMatTemps(void) //updates expansions for each material
 
 
 				if (pV != NULL){
-					if (IsFeatureEnabled(VXSFEAT_TEMPERATURE)) pV->setTemperature(pEnv->UpdateCurTemp(CurTime, &LocalVXC)-pEnv->GetTempBase()); //pEnv->GetTempAmplitude());
+					if (IsFeatureEnabled(VXSFEAT_TEMPERATURE)) {
+						pEnv->UpdateCurTemp(CurTime);
+						// pV->setTemperature(pEnv->UpdateCurTemp(CurTime, &LocalVXC)-pEnv->GetTempBase()); //pEnv->GetTempAmplitude());
+						//pV->material()->cte()*
+						vfloat tmp = pEnv->GetTempAmplitude() * sin(2*3.1415926f*(CurTime/pEnv->GetTempPeriod() + pV->phaseOffset)) - pEnv->GetTempBase();
+						pV->temp =tmp;
+					}
 					else pV->setTemperature(0);
 				}
 			}
 		}
+	}
+	for (auto link:Vx.linksList) {
+		link->updateRestLength();
 	}
 
 //#else

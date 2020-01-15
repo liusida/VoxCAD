@@ -26,7 +26,9 @@ public:
 	CVX_Environment(void);
 	~CVX_Environment(void);
 
-	void AddObject(CVX_Object* pObjIn) {pObj = pObjIn;} //!< Links a voxel object to this environment. Only one voxel object may be linked at a time. @param[in] pObjIn Pointer to an initialized voxel object to link to this simulation.
+	void AddObject(CVX_Object* pObjIn) {
+		pObj = pObjIn;
+		} //!< Links a voxel object to this environment. Only one voxel object may be linked at a time. @param[in] pObjIn Pointer to an initialized voxel object to link to this simulation.
 	CVX_Object* pObj; //link to the object in this environment
 
 	void SaveBCXFile(std::string filename);

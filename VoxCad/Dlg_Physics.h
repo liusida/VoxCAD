@@ -131,6 +131,11 @@ protected:
 
 	QSimplePlot* pPlot;
 
+private slots:
+    void on_btnInjure_clicked();
+
+    void on_chkSticky_stateChanged(int arg1);
+
 private:
 	Ui::PhysicsDialog ui;
 
