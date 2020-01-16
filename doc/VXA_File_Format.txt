@@ -88,8 +88,11 @@ This is a note for the format of configure files (VXA, VXC, etc...).
         X_Voxels                1                           //Workspace->X Voxels (how many voxels in x-direction)
         Y_Voxels                1                           //Workspace->Y Voxels
         Z_Voxels                1                           //Workspace->Z Voxels
-        Data
+        Data                                                //
             Layer x N                                       //One layer of the robot. 0002000 stands for only one voxel with material 2 in the middle.
+        PhaseOffset                                         //The structure is similar to <Data>, and this is using for make specific actuation.
+            Layer x N                                       
+
         /* below can be ignored
         numForwardModelSynapses
         numControllerSynapses
@@ -97,7 +100,6 @@ This is a note for the format of configure files (VXA, VXC, etc...).
         ControllerSynapseWeights
         ForwardModelSynapseWeights
         RegenerationModelSynapseWeights
-        PhaseOffset
         FinalPhaseOffset
         InitialVoxelSize
         FinalVoxelSize
