@@ -45,12 +45,14 @@ parts:
       - mesa-utils
       - zlib1g-dev
       - libqt5opengl5-dev
+    stage-packages:
+      - libglu1-mesa
 
 apps:
   voxcad2:
     command: bin/voxcad2
     extensions:
       - kde-neon
+    plugs:
       - opengl
-      
     
