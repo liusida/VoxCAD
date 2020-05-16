@@ -42,6 +42,7 @@ parts:
       - libglm-dev
       - mesa-utils
       - zlib1g-dev
+      - libqt5opengl5-dev
 
 apps:
   voxcad2:
