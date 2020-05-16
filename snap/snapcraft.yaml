@@ -26,7 +26,8 @@ parts:
   voxcad2:
     after: [cmake]
     plugin: make
-    source: .
+    source: https://github.com/liusida/VoxCAD
+    source-type: git
     override-build: |
       $SNAPCRAFT_STAGE/cmake/bin/cmake \
         -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_PART_INSTALL/usr/local \
