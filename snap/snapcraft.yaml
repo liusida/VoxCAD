@@ -3,10 +3,11 @@ base: core18 # the base snap is the execution environment for this snap
 version: '2.0' # just for humans, typically '1.2+git' or '1.3.2'
 summary: Design your voxel-based soft robot
 description: |
-  Design your voxel-based soft robot
+  VoxCAD is the GUI that wraps around voxelize and allows you to construct, edit and simulate objects composed of voxels (bricks).
+  Refer to: https://www.creativemachineslab.com/voxcad.html
 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   cmake:
