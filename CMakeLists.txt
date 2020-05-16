@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_BUILD_TYPE "Debug")
+option(BUILD_SHARED_LIBS "Build shared library" OFF)
+option(BUILD_STATIC_LIBS "Build static library" ON)
 
 project(voxcad2 LANGUAGES CXX)
 

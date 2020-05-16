@@ -19,7 +19,7 @@ parts:
       cmake \
         -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_STAGE/cmake \
         $SNAPCRAFT_PART_SRC
-      make -j 4
+      make -j 10
       make install
     build-packages:
       - libssl-dev
@@ -33,7 +33,7 @@ parts:
         -DCMAKE_INSTALL_PREFIX=$SNAPCRAFT_PART_INSTALL/usr/local \
         -DCMAKE_BUILD_TYPE=Release \
         $SNAPCRAFT_PART_SRC
-      make -j 4
+      make -j 10
       make install
     build-packages:
       - g++
