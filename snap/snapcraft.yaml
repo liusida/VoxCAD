@@ -48,4 +48,6 @@ parts:
 apps:
   voxcad2:
     command: bin/voxcad2
+    extensions:
+      - kde-neon
     
