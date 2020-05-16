@@ -1,4 +1,6 @@
 core
+*.snap
+
 .vscode
 
 Voxelyze

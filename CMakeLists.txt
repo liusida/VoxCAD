@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 set(CMAKE_BUILD_TYPE "Debug")
 
-project(VoxCAD LANGUAGES CXX CUDA)
+project(voxcad2 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -29,14 +29,15 @@ file(GLOB VX2_HEADER ${VX2}/include/*.h*)
 file(GLOB VX1_HEADER ${VX1}/*.h*)
 file(GLOB QTUTILS_HEADER ${QTUTILS}/*.h*)
 
-add_executable(VoxCAD ${VOXCAD}/VoxCad.qrc ${VOXCAD_SRC} ${VX2_SRC} ${VX1_SRC} ${QTUTILS_SRC} ${VOXCAD_HEADER} ${VX2_HEADER} ${VX1_HEADER} ${QTUTILS_HEADER})
+add_executable(voxcad2 ${VOXCAD}/VoxCad.qrc ${VOXCAD_SRC} ${VX2_SRC} ${VX1_SRC} ${QTUTILS_SRC} ${VOXCAD_HEADER} ${VX2_HEADER} ${VX1_HEADER} ${QTUTILS_HEADER})
+install(TARGETS voxcad2 DESTINATION bin)
 
 add_compile_definitions(QT_XML_LIB QT_OPENGL_LIB USE_ZLIB_COMPRESSION USE_OPEN_GL QT_DLL PREC_MED USE_OMP)
 
-target_include_directories(VoxCAD PUBLIC ${VOXCAD} ${VX2}/include ${VX1} ${QTUTILS}
+target_include_directories(voxcad2 PUBLIC ${VOXCAD} ${VX2}/include ${VX1} ${QTUTILS}
 )
 find_package(Qt5 COMPONENTS Core Gui Xml OpenGL Concurrent Widgets REQUIRED)
-target_link_libraries(VoxCAD PRIVATE Qt5::Core Qt5::Gui Qt5::Xml Qt5::OpenGL Qt5::Concurrent Qt5::Widgets)
+target_link_libraries(voxcad2 PRIVATE Qt5::Core Qt5::Gui Qt5::Xml Qt5::OpenGL Qt5::Concurrent Qt5::Widgets)
 
 
 
@@ -46,41 +47,41 @@ if (UNIX)
     find_package(OpenGL REQUIRED) # find and include OpenGL
     if (OpenGL_FOUND)
         message(STATUS "OPENGL FOUND")
-        target_include_directories(VoxCAD PRIVATE ${OpenGL_INCLUDE_DIRS})
-        target_link_libraries(VoxCAD PRIVATE ${OpenGL_LIBRARIES} GL)
-        target_link_libraries(VoxCAD PRIVATE ${OPENGL_glu_LIBRARY})
+        target_include_directories(voxcad2 PRIVATE ${OpenGL_INCLUDE_DIRS})
+        target_link_libraries(voxcad2 PRIVATE ${OpenGL_LIBRARIES} GL)
+        target_link_libraries(voxcad2 PRIVATE ${OPENGL_glu_LIBRARY})
     endif()
 else()
     find_package(OPENGL REQUIRED) # find and include OpenGL
     if (OPENGL_FOUND)
         message(STATUS "OPENGL FOUND")
-        target_include_directories(VoxCAD PRIVATE ${OPENGL_INCLUDE_DIRS})
-        target_link_libraries(VoxCAD PRIVATE ${OPENGL_LIBRARIES})
+        target_include_directories(voxcad2 PRIVATE ${OPENGL_INCLUDE_DIRS})
+        target_link_libraries(voxcad2 PRIVATE ${OPENGL_LIBRARIES})
     endif()
 endif()
 
 find_package(glfw3 CONFIG REQUIRED)
 if (glfw3_FOUND)
     message(STATUS "GLFW FOUND")
-    target_include_directories(VoxCAD PRIVATE ${glfw3_INCLUDE_DIRS})
-    target_link_libraries(VoxCAD PRIVATE ${glfw3_LIBRARIES})
+    target_include_directories(voxcad2 PRIVATE ${glfw3_INCLUDE_DIRS})
+    target_link_libraries(voxcad2 PRIVATE ${glfw3_LIBRARIES})
 endif()
 
 find_package(GLUT REQUIRED) # GLEW
 if (GLUT_FOUND)
     message(STATUS "GLUT FOUND")
-    target_include_directories(VoxCAD PRIVATE ${GLUT_INCLUDE_DIRS})
-    target_link_libraries(VoxCAD PRIVATE ${GLUT_LIBRARIES} glut)
+    target_include_directories(voxcad2 PRIVATE ${GLUT_INCLUDE_DIRS})
+    target_link_libraries(voxcad2 PRIVATE ${GLUT_LIBRARIES} glut)
 endif()
 
 find_package(glm CONFIG REQUIRED) # glm
 if (glm_FOUND)
     message(STATUS "GLM FOUND")
-    target_include_directories(VoxCAD PRIVATE ${glm_INCLUDE_DIRS})
-    target_link_libraries(VoxCAD PRIVATE ${glm_LIBRARIES} glm)
+    target_include_directories(voxcad2 PRIVATE ${glm_INCLUDE_DIRS})
+    target_link_libraries(voxcad2 PRIVATE ${glm_LIBRARIES} glm)
 endif()
 
 
 #for zlib
 find_package(ZLIB)
-target_link_libraries(VoxCAD PRIVATE ${ZLIB_LIBRARIES})
+target_link_libraries(voxcad2 PRIVATE ${ZLIB_LIBRARIES})
