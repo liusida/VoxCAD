@@ -51,4 +51,6 @@ apps:
     command: bin/voxcad2
     extensions:
       - kde-neon
+      - opengl
+      
     
