@@ -1,3 +1,7 @@
+# This project has been upgraded to a newer version and renamed
+
+Please refer to: http://github.com/liusida/voxcraft-viz/
+
 # VoxCAD
 
 Use QT5 Creator as IDE, instead of Visual Studio.
